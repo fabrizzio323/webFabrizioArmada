@@ -3,215 +3,216 @@ const fs = require('fs');
 
 const cvData = {
   es: {
-    role: "Backend Developer",
-    location: "San Salvador de Jujuy, Argentina",
+    roleLine: "Backend Developer · Java & Spring Boot",
+    contactLine: "fabrizioarmada3@gmail.com · +54 388 404 5447 · Jujuy, Argentina · linkedin.com/in/fabrizio3 · github.com/fabrizzio323",
     summaryTitle: "RESUMEN PROFESIONAL",
-    summaryText: "Backend Developer especializado en Java y Spring Boot. Experto en construir sistemas robustos con arquitectura limpia, manejo de excepciones y seguridad JWT. Enfocado en el desarrollo de APIs REST escalables, implementación de patrones de diseño y buenas prácticas de código.",
+    summaryText: "Backend Developer con experiencia en Java y Spring Boot en entornos de producción. Desarrollé 15 APIs REST para el sistema educativo Edumika y desarrollé un backend de e-commerce con autenticación JWT, gestión de órdenes y despliegue en producción.",
+    educationTitle: "EDUCACIÓN",
+    eduRole: "Analista Programador Universitario",
+    eduOrg: " — UNJu – Facultad de Ingeniería",
+    eduDate: "2022 — En curso",
+    eduSub: "75% completado · Estimado de graduación: 2027",
+    certTitle: "CERTIFICACIONES",
+    certs: [
+      "REST APIs con Spring Boot — Todo Code Academy, Julio 2024",
+      "Microservicios con Spring Cloud — Todo Code Academy, Septiembre 2024"
+    ],
+    projectsTitle: "PROYECTO DESTACADO",
+    projName: "EasyCommerce",
+    projOrg: " — Backend e-commerce personal en producción github.com/fabrizzio323/easyecommerce",
+    projItems: [
+      { b: "Desarrollé", t: " arquitectura en capas completa: Controller → Service → Repository" },
+      { b: "Implementé", t: " autenticación y autorización con JWT y roles diferenciados (USER / ADMIN)" },
+      { b: "Construí", t: " carrito persistente, gestión de sesiones y seguimiento de órdenes" },
+      { b: "Desplegué", t: " en producción con Render y PostgreSQL" }
+    ],
+    projSub: "Stack: Java 21 · Spring Boot · JWT · PostgresSQL · Docker",
     skillsTitle: "HABILIDADES TÉCNICAS",
     skills: [
-      { k: 'Lenguajes y Frameworks:', v: 'Java 21, Spring Boot, Spring Security, Spring Data JPA' },
-      { k: 'Seguridad y Autenticación:', v: 'JWT, Spring Security' },
-      { k: 'Bases de Datos:', v: 'PostgreSQL, MySQL, JPA, Hibernate' },
-      { k: 'Testing:', v: 'JUnit, Mockito, Integration Testing' },
-      { k: 'DevOps y Herramientas:', v: 'Docker, Maven, Git, Swagger, OpenAPI' },
-      { k: 'Arquitectura:', v: 'REST APIs, Clean Architecture, Microservicios' }
+      { k: "Lenguajes / Frameworks:", v: " Java 21, Spring Boot" },
+      { k: "Seguridad:", v: " Spring Security, JWT" },
+      { k: "Bases de datos:", v: " PostgreSQL, MySQL, JPA, Hibernate" },
+      { k: "Testing:", v: " JUnit, Mockito, Integration Testing" },
+      { k: "DevOps:", v: " Docker, Maven, Git, Swagger/OpenAPI" },
+      { k: "Arquitectura:", v: " REST APIs, Clean Architecture, Microservicios" }
     ],
-    experienceTitle: "EXPERIENCIA PROFESIONAL",
-    exp1Role: "Jefe de Cómputos",
-    exp1Date: "Abril 2025 - Actualidad",
-    exp1Org: "Secretaría de Bienestar – Universidad Nacional de Jujuy",
-    exp1Items: [
-      'Administración de infraestructura informática y soporte técnico institucional',
-      'Gestión y mantenimiento de equipos, sistemas y recursos tecnológicos',
-      'Implementación de soluciones tecnológicas para optimizar procesos administrativos',
-      'Resolución de incidencias técnicas en equipos, redes y sistemas'
-    ],
-    exp2Role: "Desarrollador Backend",
-    exp2Date: "Abril 2025 - Marzo 2026",
-    exp2Org: "Dev Jujuy",
-    exp2Items: [
-      'Desarrollo de APIs REST para integración entre sistemas',
-      'Implementación de servicios backend con Java y Spring Boot',
-      'Desarrollo de aplicaciones basadas en arquitectura de microservicios',
-      'Integración con bases de datos PostgreSQL',
-      'Documentación de APIs con Swagger / OpenAPI'
-    ],
-    exp3Role: "Docente de Apoyo – Programación",
-    exp3Date: "Febrero 2025 - Actualidad",
-    exp3Org: "Programación Estructurada en C++",
-    exp3Items: [
-      'Enseñanza de fundamentos de programación estructurada en C++',
-      'Explicación de lógica de programación, estructuras de control y funciones',
-      'Apoyo a estudiantes en resolución de ejercicios y proyectos académicos'
-    ],
-    projectsTitle: "PROYECTOS DESTACADOS",
-    proj1Name: "EasyCommerce",
-    proj1Status: "Proyecto Comercializado",
-    proj1Desc: "E-commerce backend completo desarrollado con Java y Spring Boot",
-    proj1Items: [
-      'Implementación de carrito de compras persistente con gestión de sesiones',
-      'Sistema de checkout con snapshots de precios para integridad transaccional',
-      'Control de roles y permisos con Spring Security y JWT',
-      'Arquitectura limpia con separación de capas y patrones de diseño',
-      'Despliegue en producción en Render con base de datos PostgreSQL'
-    ],
-    proj1Tech: "Tecnologías: Java 21, Spring Boot, Spring Security, JWT, JPA, Hibernate, PostgreSQL, Docker, Maven",
-    educationTitle: "EDUCACIÓN",
-    edu1Name: "Analista Programador Universitario",
-    edu1Org: "Facultad de Ingeniería – Universidad Nacional de Jujuy (UNJu)",
-    certTitle: "CERTIFICACIONES",
-    cert1Name: "Desarrollo de REST APIs con Spring Boot",
-    cert1Date: "Julio 2024",
-    cert1Org: "Todo Code Academy",
-    cert2Name: "Microservicios con Spring Cloud",
-    cert2Date: "Septiembre 2024",
-    cert2Org: "Todo Code Academy"
+    expTitle: "EXPERIENCIA PROFESIONAL",
+    experiences: [
+      {
+        role: "Desarrollador Backend", org: " — Dev Jujuy", date: "Abril 2025 — Marzo 2026",
+        sub: "Contrato por proyecto finalizado",
+        items: [
+          { b: "Desarrollé", t: " 15 APIs REST con Java y Spring Boot en entorno de producción" },
+          { b: "Implementé", t: " autenticación JWT y control de acceso por roles" },
+          { b: "Integré", t: " PostgreSQL/MySQL con JPA/Hibernate" },
+          { b: "Participé", t: " en el sistema educativo Edumika" },
+          { b: "Documenté", t: " APIs con Swagger/OpenAPI" }
+        ]
+      },
+      {
+        role: "Jefe de Cómputos", org: " — Secretaria de Bienestar — UNJu", date: "Abril 2025 — Actualidad",
+        sub: "",
+        items: [
+          { b: "Administración", t: " de infraestructura y soporte técnico" },
+          { b: "Implementación", t: " de soluciones para optimizar procesos" },
+          { b: "Gestión", t: " de sistemas y recursos informáticos" }
+        ]
+      },
+      {
+        role: "Docente de Apoyo", org: " — Programación C++ — UNJu", date: "Febrero 2025 — Actualidad",
+        sub: "",
+        items: [
+          { b: "Enseñanza", t: " de fundamentos de programación" },
+          { b: "Apoyo", t: " en resolución de problemas y debugging" }
+        ]
+      }
+    ]
   },
   en: {
-    role: "Backend Developer",
-    location: "San Salvador de Jujuy, Argentina",
+    roleLine: "Backend Developer · Java & Spring Boot",
+    contactLine: "fabrizioarmada3@gmail.com · +54 388 404 5447 · Jujuy, Argentina · linkedin.com/in/fabrizio3 · github.com/fabrizzio323",
     summaryTitle: "PROFESSIONAL SUMMARY",
-    summaryText: "Backend Developer specialized in Java and Spring Boot. Expert in building robust systems with clean architecture, exception handling, and JWT security. Focused on scalable REST API development, design patterns implementation, and clean code best practices.",
+    summaryText: "Backend Developer with experience in Java and Spring Boot in production environments. Developed 15 REST APIs for the Edumika educational system and built an e-commerce backend with JWT authentication, order management, and production deployment.",
+    educationTitle: "EDUCATION",
+    eduRole: "University Programmer Analyst",
+    eduOrg: " — UNJu – Faculty of Engineering",
+    eduDate: "2022 — Present",
+    eduSub: "75% completed · Expected graduation: 2027",
+    certTitle: "CERTIFICATIONS",
+    certs: [
+      "REST APIs with Spring Boot — Todo Code Academy, July 2024",
+      "Microservices with Spring Cloud — Todo Code Academy, September 2024"
+    ],
+    projectsTitle: "FEATURED PROJECT",
+    projName: "EasyCommerce",
+    projOrg: " — Personal e-commerce backend in production github.com/fabrizzio323/easyecommerce",
+    projItems: [
+      { b: "Developed", t: " complete layered architecture: Controller → Service → Repository" },
+      { b: "Implemented", t: " authentication and authorization with JWT and role-based access (USER / ADMIN)" },
+      { b: "Built", t: " persistent shopping cart, session management, and order tracking" },
+      { b: "Deployed", t: " to production using Render and PostgreSQL" }
+    ],
+    projSub: "Stack: Java 21 · Spring Boot · JWT · PostgresSQL · Docker",
     skillsTitle: "TECHNICAL SKILLS",
     skills: [
-      { k: 'Languages & Frameworks:', v: 'Java 21, Spring Boot, Spring Security, Spring Data JPA' },
-      { k: 'Security & Auth:', v: 'JWT, Spring Security' },
-      { k: 'Databases:', v: 'PostgreSQL, MySQL, JPA, Hibernate' },
-      { k: 'Testing:', v: 'JUnit, Mockito, Integration Testing' },
-      { k: 'DevOps & Tools:', v: 'Docker, Maven, Git, Swagger, OpenAPI' },
-      { k: 'Architecture:', v: 'REST APIs, Clean Architecture, Microservices' }
+      { k: "Languages / Frameworks:", v: " Java 21, Spring Boot" },
+      { k: "Security:", v: " Spring Security, JWT" },
+      { k: "Databases:", v: " PostgreSQL, MySQL, JPA, Hibernate" },
+      { k: "Testing:", v: " JUnit, Mockito, Integration Testing" },
+      { k: "DevOps:", v: " Docker, Maven, Git, Swagger/OpenAPI" },
+      { k: "Architecture:", v: " REST APIs, Clean Architecture, Microservices" }
     ],
-    experienceTitle: "PROFESSIONAL EXPERIENCE",
-    exp1Role: "Head of IT",
-    exp1Date: "April 2025 - Present",
-    exp1Org: "Secretariat of Welfare – National University of Jujuy",
-    exp1Items: [
-      'Administration of IT infrastructure and institutional technical support',
-      'Management and maintenance of equipment, systems, and technological resources',
-      'Implementation of technological solutions to optimize administrative processes',
-      'Resolution of technical incidents in equipment, networks, and systems'
-    ],
-    exp2Role: "Backend Developer",
-    exp2Date: "April 2025 - March 2026",
-    exp2Org: "Dev Jujuy",
-    exp2Items: [
-      'Development of REST APIs for system integration',
-      'Implementation of backend services using Java and Spring Boot',
-      'Development of applications based on microservices architecture',
-      'Integration with PostgreSQL databases',
-      'API documentation with Swagger / OpenAPI'
-    ],
-    exp3Role: "Support Teacher – Programming",
-    exp3Date: "February 2025 - Present",
-    exp3Org: "Structured Programming in C++",
-    exp3Items: [
-      'Teaching fundamentals of structured programming in C++',
-      'Explanation of programming logic, control structures, and functions',
-      'Support for students in solving exercises and academic projects'
-    ],
-    projectsTitle: "FEATURED PROJECTS",
-    proj1Name: "EasyCommerce",
-    proj1Status: "Commercialized Project",
-    proj1Desc: "Complete e-commerce backend developed with Java and Spring Boot",
-    proj1Items: [
-      'Implementation of persistent shopping cart with session management',
-      'Checkout system with price snapshots for transactional integrity',
-      'Role and permission control with Spring Security and JWT',
-      'Clean architecture with layer separation and design patterns',
-      'Production deployment on Render with PostgreSQL database'
-    ],
-    proj1Tech: "Technologies: Java 21, Spring Boot, Spring Security, JWT, JPA, Hibernate, PostgreSQL, Docker, Maven",
-    educationTitle: "EDUCATION",
-    edu1Name: "University Programmer Analyst",
-    edu1Org: "Faculty of Engineering – National University of Jujuy (UNJu)",
-    certTitle: "CERTIFICATIONS",
-    cert1Name: "REST API Development with Spring Boot",
-    cert1Date: "July 2024",
-    cert1Org: "Todo Code Academy",
-    cert2Name: "Microservices with Spring Cloud",
-    cert2Date: "September 2024",
-    cert2Org: "Todo Code Academy"
+    expTitle: "PROFESSIONAL EXPERIENCE",
+    experiences: [
+      {
+        role: "Backend Developer", org: " — Dev Jujuy", date: "April 2025 — March 2026",
+        sub: "Project contract completed",
+        items: [
+          { b: "Developed", t: " 15 REST APIs with Java and Spring Boot in a production environment" },
+          { b: "Implemented", t: " JWT authentication and role-based access control" },
+          { b: "Integrated", t: " PostgreSQL/MySQL with JPA/Hibernate" },
+          { b: "Participated", t: " in the Edumika educational system" },
+          { b: "Documented", t: " APIs with Swagger/OpenAPI" }
+        ]
+      },
+      {
+        role: "Head of IT", org: " — Secretariat of Welfare — UNJu", date: "April 2025 — Present",
+        sub: "",
+        items: [
+          { b: "Administration", t: " of IT infrastructure and technical support" },
+          { b: "Implementation", t: " of solutions to optimize processes" },
+          { b: "Management", t: " of systems and IT resources" }
+        ]
+      },
+      {
+        role: "Support Teacher", org: " — C++ Programming — UNJu", date: "February 2025 — Present",
+        sub: "",
+        items: [
+          { b: "Teaching", t: " programming fundamentals" },
+          { b: "Support", t: " in problem solving and debugging" }
+        ]
+      }
+    ]
   },
   ru: {
-    role: "Backend Разработчик",
-    location: "Сан-Сальвадор-де-Хухуй, Аргентина",
+    roleLine: "Backend-разработчик · Java & Spring Boot",
+    contactLine: "fabrizioarmada3@gmail.com · +54 388 404 5447 · Хухуй, Аргентина · linkedin.com/in/fabrizio3 · github.com/fabrizzio323",
     summaryTitle: "ПРОФЕССИОНАЛЬНОЕ РЕЗЮМЕ",
-    summaryText: "Backend-разработчик, специализирующийся на Java и Spring Boot. Эксперт по созданию надежных систем с чистой архитектурой, обработкой исключений и безопасностью JWT. Ориентирован на разработку масштабируемых REST API, внедрение шаблонов проектирования и передовых практик написания кода.",
+    summaryText: "Backend-разработчик с опытом работы с Java и Spring Boot в производственных средах. Разработал 15 REST API для образовательной системы Edumika и создал бэкенд электронной коммерции с аутентификацией JWT, управлением заказами и развертыванием в рабочей среде.",
+    educationTitle: "ОБРАЗОВАНИЕ",
+    eduRole: "Университетский программист-аналитик",
+    eduOrg: " — UNJu – Инженерный факультет",
+    eduDate: "2022 — Настоящее время",
+    eduSub: "Завершено на 75% · Ожидаемый выпуск: 2027",
+    certTitle: "СЕРТИФИКАТЫ",
+    certs: [
+      "REST API со Spring Boot — Todo Code Academy, Июль 2024",
+      "Микросервисы со Spring Cloud — Todo Code Academy, Сентябрь 2024"
+    ],
+    projectsTitle: "ИЗБРАННЫЙ ПРОЕКТ",
+    projName: "EasyCommerce",
+    projOrg: " — Личный бэкенд электронной коммерции в рабочей среде github.com/fabrizzio323/easyecommerce",
+    projItems: [
+      { b: "Разработал", t: " полную многоуровневую архитектуру: Controller → Service → Repository" },
+      { b: "Реализовал", t: " аутентификацию и авторизацию с помощью JWT и контроль доступа на основе ролей (USER / ADMIN)" },
+      { b: "Создал", t: " постоянную корзину покупок, управление сессиями и отслеживание заказов" },
+      { b: "Развернул", t: " в рабочей среде с использованием Render и PostgreSQL" }
+    ],
+    projSub: "Stack: Java 21 · Spring Boot · JWT · PostgresSQL · Docker",
     skillsTitle: "ТЕХНИЧЕСКИЕ НАВЫКИ",
     skills: [
-      { k: 'Языки и фреймворки:', v: 'Java 21, Spring Boot, Spring Security, Spring Data JPA' },
-      { k: 'Безопасность и аутентификация:', v: 'JWT, Spring Security' },
-      { k: 'Базы данных:', v: 'PostgreSQL, MySQL, JPA, Hibernate' },
-      { k: 'Тестирование:', v: 'JUnit, Mockito, Integration Testing' },
-      { k: 'DevOps и инструменты:', v: 'Docker, Maven, Git, Swagger, OpenAPI' },
-      { k: 'Архитектура:', v: 'REST API, чистая архитектура, микросервисы' }
+      { k: "Языки / Фреймворки:", v: " Java 21, Spring Boot" },
+      { k: "Безопасность:", v: " Spring Security, JWT" },
+      { k: "Базы данных:", v: " PostgreSQL, MySQL, JPA, Hibernate" },
+      { k: "Тестирование:", v: " JUnit, Mockito, Integration Testing" },
+      { k: "DevOps:", v: " Docker, Maven, Git, Swagger/OpenAPI" },
+      { k: "Архитектура:", v: " REST API, Чистая архитектура, Микросервисы" }
     ],
-    experienceTitle: "ОПЫТ РАБОТЫ",
-    exp1Role: "Начальник ИТ-отдела",
-    exp1Date: "Апрель 2025 - Настоящее время",
-    exp1Org: "Секретариат по социальным вопросам – Национальный университет Жужуя",
-    exp1Items: [
-      'Администрирование ИТ-инфраструктуры и институциональная техническая поддержка',
-      'Управление и обслуживание оборудования, систем и технологических ресурсов',
-      'Внедрение технологических решений для оптимизации административных процессов',
-      'Устранение технических инцидентов в оборудовании, сетях и системах'
-    ],
-    exp2Role: "Backend Разработчик",
-    exp2Date: "Апрель 2025 - Март 2026",
-    exp2Org: "Dev Jujuy",
-    exp2Items: [
-      'Разработка REST API для системной интеграции',
-      'Реализация backend сервисов с использованием Java и Spring Boot',
-      'Разработка приложений на основе микросервисной архитектуры',
-      'Интеграция с базами данных PostgreSQL',
-      'Документирование API с помощью Swagger / OpenAPI'
-    ],
-    exp3Role: "Преподаватель-ассистент – Программирование",
-    exp3Date: "Февраль 2025 - Настоящее время",
-    exp3Org: "Структурное программирование на C++",
-    exp3Items: [
-      'Преподавание основ структурного программирования на C++',
-      'Объяснение логики программирования, управляющих структур и функций',
-      'Помощь студентам в решении задач и академических проектов'
-    ],
-    projectsTitle: "ИЗБРАННЫЕ ПРОЕКТЫ",
-    proj1Name: "EasyCommerce",
-    proj1Status: "Коммерциализированный проект",
-    proj1Desc: "Полноценный бэкенд электронной коммерции, разработанный на Java и Spring Boot",
-    proj1Items: [
-      'Реализация постоянной корзины покупок с управлением сессиями',
-      'Система оформления заказов со снимками цен для транзакционной целостности',
-      'Управление ролями и разрешениями с помощью Spring Security и JWT',
-      'Чистая архитектура с разделением на уровни и шаблонами проектирования',
-      'Развертывание в производственной среде на Render с базой данных PostgreSQL'
-    ],
-    proj1Tech: "Технологии: Java 21, Spring Boot, Spring Security, JWT, JPA, Hibernate, PostgreSQL, Docker, Maven",
-    educationTitle: "ОБРАЗОВАНИЕ",
-    edu1Name: "Университетский аналитик-программист",
-    edu1Org: "Инженерный факультет – Национальный университет Жужуя (UNJu)",
-    certTitle: "СЕРТИФИКАТЫ",
-    cert1Name: "Разработка REST API с помощью Spring Boot",
-    cert1Date: "Июль 2024",
-    cert1Org: "Todo Code Academy",
-    cert2Name: "Микросервисы со Spring Cloud",
-    cert2Date: "Сентябрь 2024",
-    cert2Org: "Todo Code Academy"
+    expTitle: "ОПЫТ РАБОТЫ",
+    experiences: [
+      {
+        role: "Backend-разработчик", org: " — Dev Jujuy", date: "Апрель 2025 — Март 2026",
+        sub: "Проектный контракт завершен",
+        items: [
+          { b: "Разработал", t: " 15 REST API с использованием Java и Spring Boot в рабочей среде" },
+          { b: "Реализовал", t: " аутентификацию JWT и контроль доступа на основе ролей" },
+          { b: "Интегрировал", t: " PostgreSQL/MySQL с JPA/Hibernate" },
+          { b: "Участвовал", t: " в образовательной системе Edumika" },
+          { b: "Документировал", t: " API с помощью Swagger/OpenAPI" }
+        ]
+      },
+      {
+        role: "Начальник ИТ-отдела", org: " — Секретариат по социальным вопросам — UNJu", date: "Апрель 2025 — Настоящее время",
+        sub: "",
+        items: [
+          { b: "Администрирование", t: " ИТ-инфраструктуры и техническая поддержка" },
+          { b: "Внедрение", t: " решений для оптимизации процессов" },
+          { b: "Управление", t: " системами и ИТ-ресурсами" }
+        ]
+      },
+      {
+        role: "Преподаватель-ассистент", org: " — Программирование на C++ — UNJu", date: "Февраль 2025 — Настоящее время",
+        sub: "",
+        items: [
+          { b: "Преподавание", t: " основ программирования" },
+          { b: "Поддержка", t: " в решении проблем и отладке" }
+        ]
+      }
+    ]
   }
 };
 
 function generateCVForLanguage(langCode, filename) {
   return new Promise((resolve) => {
-    const doc = new PDFDocument({ margin: 50, size: 'A4' });
+    const margin = 40;
+    const doc = new PDFDocument({ margin: margin, size: 'A4' });
     const stream = fs.createWriteStream(filename);
     doc.pipe(stream);
 
-    // Usa fuentes del sistema Windows para soporte de acentos y cirilico (Ruso)
     const fontRegular = 'C:/Windows/Fonts/arial.ttf';
     const fontBold = 'C:/Windows/Fonts/arialbd.ttf';
     const fontItalic = 'C:/Windows/Fonts/ariali.ttf';
     
-    // Si Arial no existe (ej. no está en Windows puro) haremos un fallback simple, 
-    // pero PDFKit tirará error si la ruta no existe así que revisamos:
     let useSysFonts = false;
     if (fs.existsSync(fontRegular) && fs.existsSync(fontBold) && fs.existsSync(fontItalic)) {
       useSysFonts = true;
@@ -230,117 +231,93 @@ function generateCVForLanguage(langCode, filename) {
     };
 
     const data = cvData[langCode];
-    const textColor = '#333333';
-    const primaryColor = '#111827';
-    const lineColor = '#E5E7EB';
+    
+    const titleSize = 24;
+    const subtitleSize = 11;
+    const contactSize = 9.5;
+    const sectionSize = 11;
+    const normalSize = 10;
     
     // Header
-    setFont('bold').fontSize(26).fillColor(primaryColor).text('Fabrizio Luciano Armada');
-    doc.moveDown(0.3);
-    setFont('regular').fontSize(14).fillColor('#4B5563').text(data.role);
-    doc.moveDown(0.8);
+    setFont('bold').fontSize(titleSize).fillColor('#000000').text('Fabrizio Luciano Armada', { align: 'left' });
+    doc.moveDown(0.2);
+    setFont('regular').fontSize(subtitleSize).fillColor('#444444').text(data.roleLine);
+    doc.moveDown(0.2);
+    setFont('regular').fontSize(contactSize).fillColor('#555555').text(data.contactLine);
+    doc.moveDown(1);
     
-    setFont('regular').fontSize(10).fillColor('#6B7280')
-       .text(`fabrizioarmada3@gmail.com   |   ${data.location}`);
-    doc.moveDown(0.3);
-    doc.text('linkedin.com/in/fabrizio3   |   github.com/fabrizio323');
-    doc.moveDown(2.5);
-
     function drawSectionHeader(title) {
-      setFont('bold').fontSize(14).fillColor(primaryColor).text(title);
-      doc.moveDown(0.2);
-      doc.moveTo(50, doc.y).lineTo(545, doc.y).strokeColor(lineColor).stroke();
-      doc.moveDown(0.5);
+      setFont('bold').fontSize(sectionSize).fillColor('#000000').text(title.toUpperCase());
+      const y = doc.y + 2;
+      doc.moveTo(margin, y).lineTo(595 - margin, y).lineWidth(1).strokeColor('#000000').stroke();
+      doc.y = y + 6;
+    }
+
+    function customLine(boldLeft, regularLeft, rightText, isRightItalic = true) {
+      const startY = doc.y;
+      setFont('bold').fontSize(normalSize).fillColor('#000000').text(boldLeft, { continued: true });
+      setFont('regular').fillColor('#333333').text(regularLeft);
+      
+      const nextY = doc.y;
+      doc.y = startY;
+      if (isRightItalic) {
+        setFont('italic').fillColor('#888888');
+      } else {
+        setFont('regular').fillColor('#555555');
+      }
+      doc.text(rightText, { align: 'right' });
+      doc.y = nextY;
     }
 
     // SUMMARY
     drawSectionHeader(data.summaryTitle);
-    setFont('regular').fontSize(11).fillColor(textColor)
-       .text(data.summaryText, { align: 'justify', lineGap: 3 });
-    doc.moveDown(1.5);
+    setFont('regular').fontSize(normalSize).fillColor('#000000').text(data.summaryText, { align: 'left', lineGap: 1.5 });
+    doc.moveDown(1);
+
+    // EDUCATION
+    drawSectionHeader(data.educationTitle);
+    customLine(data.eduRole, data.eduOrg, data.eduDate);
+    setFont('italic').fontSize(10).fillColor('#888888').text(data.eduSub, { lineGap: 1.5 });
+    doc.moveDown(1);
+
+    // CERTIFICATIONS
+    drawSectionHeader(data.certTitle);
+    data.certs.forEach(cert => {
+      setFont('regular').fontSize(normalSize).fillColor('#000000').text(`• ${cert}`, { lineGap: 1.5, indent: 5 });
+    });
+    doc.moveDown(1);
+
+    // PROJECTS
+    drawSectionHeader(data.projectsTitle);
+    customLine(data.projName, data.projOrg, "");
+    data.projItems.forEach(item => {
+      setFont('bold').fontSize(normalSize).fillColor('#000000').text("• " + item.b, { continued: true, indent: 15 });
+      setFont('regular').text(item.t, { lineGap: 1.5 });
+    });
+    setFont('italic').fontSize(9.5).fillColor('#888888').text(data.projSub, { indent: 15 });
+    doc.moveDown(1);
 
     // SKILLS
     drawSectionHeader(data.skillsTitle);
     data.skills.forEach(skill => {
-      setFont('bold').fontSize(10).fillColor(primaryColor).text(skill.k, { continued: true });
-      setFont('regular').fillColor(textColor).text(` ${skill.v}`, { lineGap: 5 });
+      setFont('bold').fontSize(normalSize).fillColor('#000000').text(skill.k, { continued: true });
+      setFont('regular').text(skill.v, { lineGap: 2 });
     });
-    doc.moveDown(1.5);
+    doc.moveDown(1);
 
     // EXPERIENCE
-    drawSectionHeader(data.experienceTitle);
-
-    // Experience 1
-    setFont('bold').fontSize(11).fillColor(primaryColor).text(data.exp1Role, { continued: true });
-    setFont('regular').fontSize(10).fillColor('#6B7280').text(`    ${data.exp1Date}`, { align: 'right' });
-    doc.moveUp();
-    doc.moveDown(1);
-    setFont('regular').fontSize(11).fillColor(textColor).text(data.exp1Org);
-    doc.moveDown(0.3);
-    data.exp1Items.forEach(item => {
-      setFont('regular').fontSize(10).fillColor(textColor).text(`•  ${item}`, { indent: 10, lineGap: 2 });
+    drawSectionHeader(data.expTitle);
+    data.experiences.forEach((exp, index) => {
+      customLine(exp.role, exp.org, exp.date);
+      if (exp.sub) {
+        setFont('italic').fontSize(9.5).fillColor('#888888').text(exp.sub, { lineGap: 1.5 });
+      }
+      exp.items.forEach(item => {
+        setFont('bold').fontSize(normalSize).fillColor('#000000').text("• " + item.b, { continued: true, indent: 15 });
+        setFont('regular').text(item.t, { lineGap: 1.5 });
+      });
+      if (index < data.experiences.length - 1) doc.moveDown(0.8);
     });
-    doc.moveDown(1);
-
-    // Experience 2
-    setFont('bold').fontSize(11).fillColor(primaryColor).text(data.exp2Role, { continued: true });
-    setFont('regular').fontSize(10).fillColor('#6B7280').text(`    ${data.exp2Date}`, { align: 'right' });
-    doc.moveUp();
-    doc.moveDown(1);
-    setFont('regular').fontSize(11).fillColor(textColor).text(data.exp2Org);
-    doc.moveDown(0.3);
-    data.exp2Items.forEach(item => {
-      setFont('regular').fontSize(10).fillColor(textColor).text(`•  ${item}`, { indent: 10, lineGap: 2 });
-    });
-    doc.moveDown(1);
-
-    // Experience 3
-    setFont('bold').fontSize(11).fillColor(primaryColor).text(data.exp3Role, { continued: true });
-    setFont('regular').fontSize(10).fillColor('#6B7280').text(`    ${data.exp3Date}`, { align: 'right' });
-    doc.moveUp();
-    doc.moveDown(1);
-    setFont('regular').fontSize(11).fillColor(textColor).text(data.exp3Org);
-    doc.moveDown(0.3);
-    data.exp3Items.forEach(item => {
-      setFont('regular').fontSize(10).fillColor(textColor).text(`•  ${item}`, { indent: 10, lineGap: 2 });
-    });
-    doc.moveDown(1.5);
-
-    // PROJECTS
-    drawSectionHeader(data.projectsTitle);
-    setFont('bold').fontSize(11).fillColor(primaryColor).text(data.proj1Name, { continued: true });
-    setFont('regular').fontSize(10).fillColor('#6B7280').text(`    ${data.proj1Status}`, { align: 'right' });
-    doc.moveUp();
-    doc.moveDown(1);
-    setFont('italic').fontSize(10).fillColor(textColor).text(data.proj1Desc);
-    doc.moveDown(0.3);
-    data.proj1Items.forEach(item => {
-      setFont('regular').fontSize(10).fillColor(textColor).text(`•  ${item}`, { indent: 10, lineGap: 2 });
-    });
-    doc.moveDown(0.3);
-    setFont('regular').fontSize(10).fillColor('#4B5563').text(data.proj1Tech, { indent: 10 });
-    doc.moveDown(1.5);
-
-    // EDUCATION
-    drawSectionHeader(data.educationTitle);
-    setFont('bold').fontSize(11).fillColor(primaryColor).text(data.edu1Name);
-    setFont('regular').fontSize(10).fillColor(textColor).text(data.edu1Org);
-    doc.moveDown(1.5);
-
-    // CERTIFICATIONS
-    drawSectionHeader(data.certTitle);
-    setFont('bold').fontSize(11).fillColor(primaryColor).text(data.cert1Name, { continued: true });
-    setFont('regular').fontSize(10).fillColor('#6B7280').text(`    ${data.cert1Date}`, { align: 'right' });
-    doc.moveUp();
-    doc.moveDown(1);
-    setFont('regular').fontSize(10).fillColor(textColor).text(data.cert1Org);
-    doc.moveDown(0.8);
-    
-    setFont('bold').fontSize(11).fillColor(primaryColor).text(data.cert2Name, { continued: true });
-    setFont('regular').fontSize(10).fillColor('#6B7280').text(`    ${data.cert2Date}`, { align: 'right' });
-    doc.moveUp();
-    doc.moveDown(1);
-    setFont('regular').fontSize(10).fillColor(textColor).text(data.cert2Org);
 
     doc.end();
     stream.on('finish', resolve);
