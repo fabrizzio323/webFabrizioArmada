@@ -212,7 +212,7 @@ function generateCVForLanguage(langCode, filename) {
     const fontRegular = 'C:/Windows/Fonts/arial.ttf';
     const fontBold = 'C:/Windows/Fonts/arialbd.ttf';
     const fontItalic = 'C:/Windows/Fonts/ariali.ttf';
-    
+
     let useSysFonts = false;
     if (fs.existsSync(fontRegular) && fs.existsSync(fontBold) && fs.existsSync(fontItalic)) {
       useSysFonts = true;
@@ -231,13 +231,13 @@ function generateCVForLanguage(langCode, filename) {
     };
 
     const data = cvData[langCode];
-    
+
     const titleSize = 24;
     const subtitleSize = 11;
     const contactSize = 9.5;
     const sectionSize = 11;
     const normalSize = 10;
-    
+
     // Header
     setFont('bold').fontSize(titleSize).fillColor('#000000').text('Fabrizio Luciano Armada', { align: 'left' });
     doc.moveDown(0.2);
@@ -245,7 +245,7 @@ function generateCVForLanguage(langCode, filename) {
     doc.moveDown(0.2);
     setFont('regular').fontSize(contactSize).fillColor('#555555').text(data.contactLine);
     doc.moveDown(1);
-    
+
     function drawSectionHeader(title) {
       setFont('bold').fontSize(sectionSize).fillColor('#000000').text(title.toUpperCase());
       const y = doc.y + 2;
@@ -257,7 +257,7 @@ function generateCVForLanguage(langCode, filename) {
       const startY = doc.y;
       setFont('bold').fontSize(normalSize).fillColor('#000000').text(boldLeft, { continued: true });
       setFont('regular').fillColor('#333333').text(regularLeft);
-      
+
       const nextY = doc.y;
       doc.y = startY;
       if (isRightItalic) {

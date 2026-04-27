@@ -57,6 +57,110 @@ export function FeaturedProject() {
             viewport={{ once: true }}
             className="space-y-4"
           >
+            {/* Architecture Diagram Interactive CSS */}
+            <Card className="overflow-hidden rounded-2xl bg-card/50 backdrop-blur-sm border-border">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-lg text-foreground flex items-center gap-2">
+                  <Layers className="w-5 h-5 text-primary" />
+                  Arquitectura del Sistema
+                </CardTitle>
+                <CardDescription>Diagrama estructural de flujo interactivo</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-secondary/20 p-4 md:p-6 rounded-xl w-full border border-border/50 overflow-x-auto relative">
+
+                  <div className="min-w-[800px] flex flex-col items-center justify-center font-mono text-sm md:text-base">
+                    {/* Client */}
+                    <motion.div whileHover={{ scale: 1.05 }} className="bg-white dark:bg-zinc-800 text-black dark:text-white px-8 py-3 text-base font-semibold shadow border border-border/50 rounded-sm z-10 transition-colors">
+                      Client
+                    </motion.div>
+
+                    {/* Line & Label */}
+                    <div className="h-6 w-px bg-muted-foreground/40"></div>
+                    <div className="bg-muted px-4 py-1 text-xs font-semibold text-muted-foreground rounded-sm z-10 shadow-sm">REST API</div>
+                    <div className="h-6 w-px bg-muted-foreground/40"></div>
+
+                    {/* Controller Layer */}
+                    <motion.div whileHover={{ scale: 1.05 }} className="w-[85%] max-w-3xl bg-red-400 dark:bg-red-500/80 text-white text-center py-3 text-base font-bold shadow-md rounded-md z-10 tracking-[0.2em]">
+                      CONTROLLER
+                    </motion.div>
+
+                    {/* Branches */}
+                    <div className="flex w-[95%] max-w-4xl justify-between mt-0 relative">
+                      {/* Connection Horizontal Line */}
+                      <div className="absolute top-5 left-[10%] right-[10%] h-[2px] bg-muted-foreground/40 z-0"></div>
+
+                      {/* Branch 1: Auth */}
+                      <div className="flex flex-col items-center mt-5 z-10 w-[18%]">
+                        <div className="h-6 w-[2px] bg-muted-foreground/40 mt-[-24px]"></div>
+                        <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-2 py-2 w-[95%] text-center text-xs md:text-sm font-semibold truncate rounded-md shadow-sm">AuthCtrl</div>
+                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
+                        <div className="flex gap-2 w-[95%] justify-center h-8">
+                          <div className="bg-red-400 text-white text-[11px] font-medium px-1 rounded-sm w-1/2 flex items-center justify-center shadow-sm">Security</div>
+                          <div className="bg-amber-400 text-black text-[11px] font-medium px-1 rounded-sm w-1/2 flex items-center justify-center shadow-sm">AuthSrv</div>
+                        </div>
+                      </div>
+
+                      {/* Branch 2: Products */}
+                      <div className="flex flex-col items-center mt-5 z-10 w-[18%]">
+                        <div className="h-6 w-[2px] bg-muted-foreground/40 mt-[-24px]"></div>
+                        <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-2 py-2 w-[95%] text-center text-xs md:text-sm font-semibold truncate rounded-md shadow-sm">ProdCtrl</div>
+                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
+                        <div className="bg-white dark:bg-zinc-800 border border-border px-2 py-2.5 w-[95%] text-center text-xs font-semibold truncate rounded-md shadow-sm">ProductSrv</div>
+                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
+                        <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-2 py-2.5 w-[95%] text-center text-[11px] md:text-xs font-bold truncate rounded-md shadow-sm">ProductRepo</div>
+                      </div>
+
+                      {/* Branch 3: Categories */}
+                      <div className="flex flex-col items-center mt-5 z-10 w-[18%]">
+                        <div className="h-6 w-[2px] bg-muted-foreground/40 mt-[-24px]"></div>
+                        <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-2 py-2 w-[95%] text-center text-xs md:text-sm font-semibold truncate rounded-md shadow-sm">CatCtrl</div>
+                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
+                        <div className="bg-white dark:bg-zinc-800 border border-border px-2 py-2.5 w-[95%] text-center text-xs font-semibold truncate rounded-md shadow-sm">CategorySrv</div>
+                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
+                        <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-2 py-2.5 w-[95%] text-center text-[11px] md:text-xs font-bold truncate rounded-md shadow-sm">CatRepo</div>
+                      </div>
+
+                      {/* Branch 4: Cart */}
+                      <div className="flex flex-col items-center mt-5 z-10 w-[18%]">
+                        <div className="h-6 w-[2px] bg-muted-foreground/40 mt-[-24px]"></div>
+                        <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-2 py-2 w-[95%] text-center text-xs md:text-sm font-semibold truncate rounded-md shadow-sm">CartCtrl</div>
+                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
+                        <div className="bg-white dark:bg-zinc-800 border border-border px-2 py-2.5 w-[95%] text-center text-xs font-semibold truncate rounded-md shadow-sm">CartSrv</div>
+                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
+                        <div className="flex w-[95%] gap-2 justify-center h-8">
+                          <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-1 w-1/2 flex items-center justify-center text-[10px] md:text-[11px] font-bold truncate rounded-md shadow-sm">CartRp</div>
+                          <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-1 w-1/2 flex items-center justify-center text-[10px] md:text-[11px] font-bold truncate rounded-md shadow-sm">ItemRp</div>
+                        </div>
+                      </div>
+
+                      {/* Branch 5: Order */}
+                      <div className="flex flex-col items-center mt-5 z-10 w-[18%]">
+                        <div className="h-6 w-[2px] bg-muted-foreground/40 mt-[-24px]"></div>
+                        <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-2 py-2 w-[95%] text-center text-xs md:text-sm font-semibold truncate rounded-md shadow-sm">OrderCtrl</div>
+                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
+                        <div className="bg-white dark:bg-zinc-800 border border-border px-2 py-2.5 w-[95%] text-center text-xs font-semibold truncate rounded-md shadow-sm">OrderSrv</div>
+                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
+                        <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-2 py-2.5 w-[95%] text-center text-[11px] md:text-xs font-bold truncate rounded-md shadow-sm">OrderRepo</div>
+                      </div>
+                    </div>
+
+                    {/* Entities to DB Connectors */}
+                    <div className="h-8 w-full flex justify-center relative mt-4">
+                      <div className="absolute top-0 bottom-0 left-[18%] right-[18%] border-b-2 border-l-2 border-r-2 border-muted-foreground/30 rounded-b-2xl z-0"></div>
+                      <div className="absolute bottom-0 h-6 w-[2px] bg-muted-foreground/30 z-0"></div>
+                    </div>
+
+                    {/* Database Box */}
+                    <motion.div whileHover={{ scale: 1.05 }} className="bg-teal-400 dark:bg-teal-500/80 text-black dark:text-white px-16 py-3 text-base tracking-[0.2em] font-extrabold shadow-lg mt-0 z-10 rounded-md">
+                      DATABASE
+                    </motion.div>
+
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Swagger UI Placeholder */}
             <Card className="overflow-hidden rounded-2xl bg-card/50 backdrop-blur-sm border-border">
               <CardHeader className="pb-2">
@@ -149,9 +253,9 @@ export function FeaturedProject() {
             {/* Tech Badges */}
             <div className="flex flex-wrap gap-2">
               {techStack.map((tech) => (
-                <Badge 
-                  key={tech} 
-                  variant="secondary" 
+                <Badge
+                  key={tech}
+                  variant="secondary"
                   className="rounded-full bg-secondary/50 text-secondary-foreground hover:bg-secondary/80"
                 >
                   {tech}
@@ -207,7 +311,7 @@ export function FeaturedProject() {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-4">
-              <Button 
+              <Button
                 className="rounded-2xl bg-primary text-primary-foreground hover:bg-primary/90 flex-1"
                 asChild
               >
@@ -216,8 +320,8 @@ export function FeaturedProject() {
                   GitHub Repository
                 </a>
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="rounded-2xl border-border hover:bg-secondary/50 flex-1"
                 asChild
               >
