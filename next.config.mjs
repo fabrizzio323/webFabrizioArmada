@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production"
+
 const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
@@ -6,8 +8,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  output: "export",
-  basePath: "/webFabrizioArmada",
+  ...(isProd && {
+    output: "export",
+    basePath: "/webFabrizioArmada",
+  }),
 }
 
 export default nextConfig

@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Github, ExternalLink, Shield, Database, Layers } from "lucide-react"
 import { motion } from "framer-motion"
@@ -26,16 +26,112 @@ const projectFeatures = [
 
 const techStack = ["Java 17", "Spring Boot 3", "Spring Security", "PostgreSQL", "Docker", "Swagger/OpenAPI"]
 
+// Diagrama de arquitectura simplificado, completamente responsivo
+function ArchDiagram() {
+  const branches = [
+    { ctrl: "AuthCtrl", srv: "AuthSrv", repo: null, extra: "Security", color: "red" },
+    { ctrl: "ProdCtrl", srv: "ProductSrv", repo: "ProductRepo", extra: null, color: "blue" },
+    { ctrl: "CatCtrl", srv: "CategorySrv", repo: "CatRepo", extra: null, color: "blue" },
+    { ctrl: "CartCtrl", srv: "CartSrv", repo: "CartRepo", extra: null, color: "blue" },
+    { ctrl: "OrderCtrl", srv: "OrderSrv", repo: "OrderRepo", extra: null, color: "blue" },
+  ]
+
+  return (
+    <div className="w-full overflow-x-auto rounded-xl">
+      {/* Versión compacta para mobile (< md) */}
+      <div className="md:hidden w-full space-y-1.5 p-3">
+        {/* Client → Controller */}
+        <div className="flex flex-col items-center gap-1">
+          <div className="bg-white dark:bg-zinc-800 border border-border px-5 py-1.5 rounded text-xs font-semibold text-foreground shadow-sm">Client</div>
+          <div className="h-4 w-px bg-muted-foreground/40" />
+          <div className="bg-muted px-3 py-0.5 text-[10px] font-semibold text-muted-foreground rounded">REST API</div>
+          <div className="h-4 w-px bg-muted-foreground/40" />
+          <div className="w-full bg-red-400 dark:bg-red-500/80 text-white text-center py-1.5 text-[11px] font-bold rounded tracking-widest shadow">CONTROLLER</div>
+        </div>
+
+        {/* Branches en grid 2 col */}
+        <div className="grid grid-cols-2 gap-1.5 mt-1.5">
+          {branches.map((b) => (
+            <div key={b.ctrl} className="flex flex-col gap-1 bg-secondary/20 border border-border/50 rounded-lg p-2">
+              <div className="bg-zinc-100 dark:bg-zinc-900 border border-border text-center text-[10px] font-semibold py-1 rounded truncate">{b.ctrl}</div>
+              <div className="h-3 w-px bg-muted-foreground/40 mx-auto" />
+              <div className="bg-white dark:bg-zinc-800 border border-border text-center text-[10px] font-medium py-1 rounded truncate">{b.srv}</div>
+              {b.extra && (
+                <>
+                  <div className="h-3 w-px bg-muted-foreground/40 mx-auto" />
+                  <div className="bg-red-400 text-white text-[9px] font-medium py-0.5 rounded text-center truncate">{b.extra}</div>
+                </>
+              )}
+              {b.repo && (
+                <>
+                  <div className="h-3 w-px bg-muted-foreground/40 mx-auto" />
+                  <div className="border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 text-[9px] font-bold py-0.5 rounded text-center truncate">{b.repo}</div>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Database */}
+        <div className="flex flex-col items-center gap-1 mt-1">
+          <div className="h-4 w-px bg-muted-foreground/40" />
+          <div className="w-full bg-teal-400 dark:bg-teal-500/80 text-black dark:text-white text-center py-1.5 text-[11px] font-extrabold rounded tracking-widest shadow">DATABASE</div>
+        </div>
+      </div>
+
+      {/* Versión completa para desktop (>= md) */}
+      <div className="hidden md:block min-w-[640px] flex flex-col items-center justify-center font-mono text-xs p-5">
+        <div className="flex flex-col items-center w-full">
+          <motion.div whileHover={{ scale: 1.05 }} className="bg-white dark:bg-zinc-800 text-black dark:text-white px-8 py-2.5 text-sm font-semibold shadow border border-border/50 rounded-sm z-10 transition-colors">Client</motion.div>
+          <div className="h-5 w-px bg-muted-foreground/40" />
+          <div className="bg-muted px-4 py-1 text-xs font-semibold text-muted-foreground rounded-sm z-10 shadow-sm">REST API</div>
+          <div className="h-5 w-px bg-muted-foreground/40" />
+          <motion.div whileHover={{ scale: 1.05 }} className="w-[85%] bg-red-400 dark:bg-red-500/80 text-white text-center py-2.5 text-sm font-bold shadow-md rounded-md z-10 tracking-[0.2em]">CONTROLLER</motion.div>
+
+          <div className="flex w-[95%] justify-between mt-0 relative">
+            <div className="absolute top-5 left-[10%] right-[10%] h-[2px] bg-muted-foreground/40 z-0" />
+            {branches.map((b) => (
+              <div key={b.ctrl} className="flex flex-col items-center mt-5 z-10 w-[18%]">
+                <div className="h-5 w-[2px] bg-muted-foreground/40 mt-[-20px]" />
+                <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-1 py-1.5 w-full text-center text-[10px] font-semibold truncate rounded-md shadow-sm">{b.ctrl}</div>
+                <div className="h-4 w-[2px] bg-muted-foreground/40" />
+                {b.extra ? (
+                  <div className="flex gap-1 w-full justify-center h-7">
+                    <div className="bg-red-400 text-white text-[9px] font-medium px-1 rounded-sm w-1/2 flex items-center justify-center shadow-sm">Security</div>
+                    <div className="bg-amber-400 text-black text-[9px] font-medium px-1 rounded-sm w-1/2 flex items-center justify-center shadow-sm">{b.srv}</div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="bg-white dark:bg-zinc-800 border border-border px-1 py-1.5 w-full text-center text-[10px] font-semibold truncate rounded-md shadow-sm">{b.srv}</div>
+                    <div className="h-4 w-[2px] bg-muted-foreground/40" />
+                    <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-1 py-1.5 w-full text-center text-[9px] font-bold truncate rounded-md shadow-sm">{b.repo}</div>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="h-7 w-full flex justify-center relative mt-3">
+            <div className="absolute top-0 bottom-0 left-[18%] right-[18%] border-b-2 border-l-2 border-r-2 border-muted-foreground/30 rounded-b-2xl z-0" />
+            <div className="absolute bottom-0 h-5 w-[2px] bg-muted-foreground/30 z-0" />
+          </div>
+          <motion.div whileHover={{ scale: 1.05 }} className="bg-teal-400 dark:bg-teal-500/80 text-black dark:text-white px-14 py-2.5 text-sm tracking-[0.2em] font-extrabold shadow-lg z-10 rounded-md">DATABASE</motion.div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function FeaturedProject() {
   return (
-    <section id="projects" className="py-20 md:py-32">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-16 sm:py-20 md:py-32">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
         >
           <Badge variant="outline" className="mb-4 rounded-full border-primary/50 text-primary">
             Proyecto Destacado
@@ -43,13 +139,13 @@ export function FeaturedProject() {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             EasyCommerce
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base">
             API REST completa para e-commerce con arquitectura limpia y seguridad empresarial
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 items-start">
-          {/* Project Screenshots Placeholder */}
+          {/* Left Column: Diagrams */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -57,198 +153,58 @@ export function FeaturedProject() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            {/* Architecture Diagram Interactive CSS */}
+            {/* Architecture Diagram */}
             <Card className="overflow-hidden rounded-2xl bg-card/50 backdrop-blur-sm border-border">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg text-foreground flex items-center gap-2">
-                  <Layers className="w-5 h-5 text-primary" />
+                <CardTitle className="text-base sm:text-lg text-foreground flex items-center gap-2">
+                  <Layers className="w-5 h-5 text-primary shrink-0" />
                   Arquitectura del Sistema
                 </CardTitle>
-                <CardDescription>Diagrama estructural de flujo interactivo</CardDescription>
+                <CardDescription className="text-xs sm:text-sm">Diagrama estructural de flujo interactivo</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="bg-secondary/20 p-4 md:p-6 rounded-xl w-full border border-border/50 overflow-x-auto relative">
-
-                  <div className="min-w-[800px] flex flex-col items-center justify-center font-mono text-sm md:text-base">
-                    {/* Client */}
-                    <motion.div whileHover={{ scale: 1.05 }} className="bg-white dark:bg-zinc-800 text-black dark:text-white px-8 py-3 text-base font-semibold shadow border border-border/50 rounded-sm z-10 transition-colors">
-                      Client
-                    </motion.div>
-
-                    {/* Line & Label */}
-                    <div className="h-6 w-px bg-muted-foreground/40"></div>
-                    <div className="bg-muted px-4 py-1 text-xs font-semibold text-muted-foreground rounded-sm z-10 shadow-sm">REST API</div>
-                    <div className="h-6 w-px bg-muted-foreground/40"></div>
-
-                    {/* Controller Layer */}
-                    <motion.div whileHover={{ scale: 1.05 }} className="w-[85%] max-w-3xl bg-red-400 dark:bg-red-500/80 text-white text-center py-3 text-base font-bold shadow-md rounded-md z-10 tracking-[0.2em]">
-                      CONTROLLER
-                    </motion.div>
-
-                    {/* Branches */}
-                    <div className="flex w-[95%] max-w-4xl justify-between mt-0 relative">
-                      {/* Connection Horizontal Line */}
-                      <div className="absolute top-5 left-[10%] right-[10%] h-[2px] bg-muted-foreground/40 z-0"></div>
-
-                      {/* Branch 1: Auth */}
-                      <div className="flex flex-col items-center mt-5 z-10 w-[18%]">
-                        <div className="h-6 w-[2px] bg-muted-foreground/40 mt-[-24px]"></div>
-                        <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-2 py-2 w-[95%] text-center text-xs md:text-sm font-semibold truncate rounded-md shadow-sm">AuthCtrl</div>
-                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
-                        <div className="flex gap-2 w-[95%] justify-center h-8">
-                          <div className="bg-red-400 text-white text-[11px] font-medium px-1 rounded-sm w-1/2 flex items-center justify-center shadow-sm">Security</div>
-                          <div className="bg-amber-400 text-black text-[11px] font-medium px-1 rounded-sm w-1/2 flex items-center justify-center shadow-sm">AuthSrv</div>
-                        </div>
-                      </div>
-
-                      {/* Branch 2: Products */}
-                      <div className="flex flex-col items-center mt-5 z-10 w-[18%]">
-                        <div className="h-6 w-[2px] bg-muted-foreground/40 mt-[-24px]"></div>
-                        <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-2 py-2 w-[95%] text-center text-xs md:text-sm font-semibold truncate rounded-md shadow-sm">ProdCtrl</div>
-                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
-                        <div className="bg-white dark:bg-zinc-800 border border-border px-2 py-2.5 w-[95%] text-center text-xs font-semibold truncate rounded-md shadow-sm">ProductSrv</div>
-                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
-                        <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-2 py-2.5 w-[95%] text-center text-[11px] md:text-xs font-bold truncate rounded-md shadow-sm">ProductRepo</div>
-                      </div>
-
-                      {/* Branch 3: Categories */}
-                      <div className="flex flex-col items-center mt-5 z-10 w-[18%]">
-                        <div className="h-6 w-[2px] bg-muted-foreground/40 mt-[-24px]"></div>
-                        <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-2 py-2 w-[95%] text-center text-xs md:text-sm font-semibold truncate rounded-md shadow-sm">CatCtrl</div>
-                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
-                        <div className="bg-white dark:bg-zinc-800 border border-border px-2 py-2.5 w-[95%] text-center text-xs font-semibold truncate rounded-md shadow-sm">CategorySrv</div>
-                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
-                        <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-2 py-2.5 w-[95%] text-center text-[11px] md:text-xs font-bold truncate rounded-md shadow-sm">CatRepo</div>
-                      </div>
-
-                      {/* Branch 4: Cart */}
-                      <div className="flex flex-col items-center mt-5 z-10 w-[18%]">
-                        <div className="h-6 w-[2px] bg-muted-foreground/40 mt-[-24px]"></div>
-                        <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-2 py-2 w-[95%] text-center text-xs md:text-sm font-semibold truncate rounded-md shadow-sm">CartCtrl</div>
-                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
-                        <div className="bg-white dark:bg-zinc-800 border border-border px-2 py-2.5 w-[95%] text-center text-xs font-semibold truncate rounded-md shadow-sm">CartSrv</div>
-                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
-                        <div className="flex w-[95%] gap-2 justify-center h-8">
-                          <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-1 w-1/2 flex items-center justify-center text-[10px] md:text-[11px] font-bold truncate rounded-md shadow-sm">CartRp</div>
-                          <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-1 w-1/2 flex items-center justify-center text-[10px] md:text-[11px] font-bold truncate rounded-md shadow-sm">ItemRp</div>
-                        </div>
-                      </div>
-
-                      {/* Branch 5: Order */}
-                      <div className="flex flex-col items-center mt-5 z-10 w-[18%]">
-                        <div className="h-6 w-[2px] bg-muted-foreground/40 mt-[-24px]"></div>
-                        <div className="bg-zinc-100 dark:bg-zinc-900 border border-border px-2 py-2 w-[95%] text-center text-xs md:text-sm font-semibold truncate rounded-md shadow-sm">OrderCtrl</div>
-                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
-                        <div className="bg-white dark:bg-zinc-800 border border-border px-2 py-2.5 w-[95%] text-center text-xs font-semibold truncate rounded-md shadow-sm">OrderSrv</div>
-                        <div className="h-5 w-[2px] bg-muted-foreground/40"></div>
-                        <div className="bg-white dark:bg-zinc-800 border-2 border-blue-400/50 text-blue-600 dark:text-blue-400 px-2 py-2.5 w-[95%] text-center text-[11px] md:text-xs font-bold truncate rounded-md shadow-sm">OrderRepo</div>
-                      </div>
-                    </div>
-
-                    {/* Entities to DB Connectors */}
-                    <div className="h-8 w-full flex justify-center relative mt-4">
-                      <div className="absolute top-0 bottom-0 left-[18%] right-[18%] border-b-2 border-l-2 border-r-2 border-muted-foreground/30 rounded-b-2xl z-0"></div>
-                      <div className="absolute bottom-0 h-6 w-[2px] bg-muted-foreground/30 z-0"></div>
-                    </div>
-
-                    {/* Database Box */}
-                    <motion.div whileHover={{ scale: 1.05 }} className="bg-teal-400 dark:bg-teal-500/80 text-black dark:text-white px-16 py-3 text-base tracking-[0.2em] font-extrabold shadow-lg mt-0 z-10 rounded-md">
-                      DATABASE
-                    </motion.div>
-
-                  </div>
-                </div>
+              <CardContent className="p-3 sm:p-6">
+                <ArchDiagram />
               </CardContent>
             </Card>
 
-            {/* Swagger UI Placeholder */}
+            {/* Database Schema */}
             <Card className="overflow-hidden rounded-2xl bg-card/50 backdrop-blur-sm border-border">
-              <CardHeader className="pb-2">
-                <CardDescription className="text-xs font-mono text-muted-foreground">
-                  Swagger UI Documentation
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0">
-                <div className="bg-white dark:bg-[#121212] h-48 md:h-64 flex flex-col border-t border-border overflow-hidden">
-                  <div className="bg-slate-100 dark:bg-[#1e1e1e] p-2 flex items-center gap-2 border-b border-border/50">
-                    <div className="flex gap-1.5 px-2">
-                      <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-                      <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
-                      <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
-                    </div>
-                    <div className="text-[10px] font-mono text-muted-foreground">/swagger-ui.html</div>
-                  </div>
-                  <div className="p-3 md:p-4 space-y-2.5 flex-1 overflow-hidden opacity-90 hover:opacity-100 transition-opacity">
-                    {/* GET Endpoint */}
-                    <div className="flex items-center gap-3 border border-blue-200 dark:border-blue-900/50 bg-blue-50/50 dark:bg-blue-950/20 rounded px-2 py-1.5">
-                      <span className="bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded w-12 text-center">GET</span>
-                      <span className="font-mono text-xs text-foreground font-medium truncate">/api/products</span>
-                      <span className="text-[10px] text-muted-foreground hidden sm:block ml-auto truncate">Obtener inventario</span>
-                    </div>
-                    {/* POST Endpoint */}
-                    <div className="flex items-center gap-3 border border-green-200 dark:border-green-900/50 bg-green-50/50 dark:bg-green-950/20 rounded px-2 py-1.5">
-                      <span className="bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded w-12 text-center">POST</span>
-                      <span className="font-mono text-xs text-foreground font-medium truncate">/api/cart/add</span>
-                      <span className="text-[10px] text-muted-foreground hidden sm:block ml-auto truncate">Añadir al carrito</span>
-                    </div>
-                    {/* POST Auth Endpoint */}
-                    <div className="flex items-center gap-3 border border-green-200 dark:border-green-900/50 bg-green-50/50 dark:bg-green-950/20 rounded px-2 py-1.5">
-                      <span className="bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded w-12 text-center">POST</span>
-                      <span className="font-mono text-xs text-foreground font-medium truncate">/api/auth/login</span>
-                      <span className="text-[10px] text-muted-foreground hidden sm:block ml-auto truncate">Autenticación (JWT)</span>
-                    </div>
-                    {/* PUT Order Endpoint */}
-                    <div className="flex items-center gap-3 border border-amber-200 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-950/20 rounded px-2 py-1.5 opacity-70">
-                      <span className="bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded w-12 text-center">PUT</span>
-                      <span className="font-mono text-xs text-foreground font-medium truncate">/api/orders/checkout</span>
-                      <span className="text-[10px] text-muted-foreground hidden sm:block ml-auto truncate">Procesar pago</span>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Database Schema Details */}
-            <Card className="overflow-hidden rounded-2xl bg-card/50 backdrop-blur-sm border-border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg text-foreground flex items-center gap-2">
-                  <Database className="w-5 h-5 text-primary" />
+              <CardHeader className="pb-2 px-4 sm:px-6">
+                <CardTitle className="text-base sm:text-lg text-foreground flex items-center gap-2">
+                  <Database className="w-5 h-5 text-primary shrink-0" />
                   Diseño de Base de Datos (E-R)
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                  Comprender el flujo de datos es clave. El sistema maneja carritos persistentes y los convierte en órdenes con registros históricos de precios.
+              <CardContent className="px-4 sm:px-6">
+                <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
+                  El sistema maneja carritos persistentes y los convierte en órdenes con registros históricos de precios.
                 </p>
-                <ul className="space-y-3 text-sm text-muted-foreground font-mono">
-                  <li className="p-3 rounded-xl bg-secondary/30 border border-border/50">
-                    <strong className="text-foreground">User (1) &harr; (1) Cart</strong>
-                    <p className="font-sans text-xs mt-1 text-muted-foreground">Cada usuario tiene su carrito de compras persistente.</p>
-                  </li>
-                  <li className="p-3 rounded-xl bg-secondary/30 border border-border/50">
-                    <strong className="text-foreground">Cart (1) &harr; (N) CartItem</strong>
-                    <p className="font-sans text-xs mt-1 text-muted-foreground">Los artículos en el carrito referencian productos y cantidades.</p>
-                  </li>
-                  <li className="p-3 rounded-xl bg-secondary/30 border border-border/50">
-                    <strong className="text-foreground">Order (1) &harr; (N) OrderItem</strong>
-                    <p className="font-sans text-xs mt-1 text-muted-foreground">Al procesar la compra, los artículos del carrito se convierten en artículos de la orden.</p>
-                  </li>
-                  <li className="p-3 rounded-xl bg-secondary/30 border border-border/50">
-                    <strong className="text-foreground text-primary">Price Snapshot</strong>
-                    <p className="font-sans text-xs mt-1 text-muted-foreground">OrderItem almacena el precio al instante de la compra para asegurar la precisión histórica si el producto cambia de valor más adelante.</p>
-                  </li>
+                <ul className="space-y-2 sm:space-y-2.5">
+                  {[
+                    { rel: "User (1) ↔ (1) Cart", desc: "Cada usuario tiene su carrito de compras persistente." },
+                    { rel: "Cart (1) ↔ (N) CartItem", desc: "Los artículos en el carrito referencian productos y cantidades." },
+                    { rel: "Order (1) ↔ (N) OrderItem", desc: "Al procesar la compra, los artículos del carrito se convierten en ítems de la orden." },
+                    { rel: "Price Snapshot", desc: "OrderItem almacena el precio al momento de la compra para asegurar precisión histórica.", accent: true },
+                  ].map((item) => (
+                    <li key={item.rel} className="p-2.5 sm:p-3 rounded-xl bg-secondary/30 border border-border/50">
+                      <strong className={`font-mono text-[11px] sm:text-xs block mb-1 ${
+                        item.accent ? "text-primary" : "text-foreground"
+                      }`}>{item.rel}</strong>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                    </li>
+                  ))}
                 </ul>
               </CardContent>
             </Card>
           </motion.div>
 
-          {/* Project Details */}
+          {/* Right Column: Project Details */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-5 sm:space-y-6"
           >
             {/* Tech Badges */}
             <div className="flex flex-wrap gap-2">
@@ -256,7 +212,7 @@ export function FeaturedProject() {
                 <Badge
                   key={tech}
                   variant="secondary"
-                  className="rounded-full bg-secondary/50 text-secondary-foreground hover:bg-secondary/80"
+                  className="rounded-full bg-secondary/50 text-secondary-foreground hover:bg-secondary/80 text-xs"
                 >
                   {tech}
                 </Badge>
@@ -264,25 +220,53 @@ export function FeaturedProject() {
             </div>
 
             {/* Description */}
-            <Card className="rounded-2xl bg-card/50 backdrop-blur-sm border-border">
-              <CardHeader>
-                <CardTitle className="text-lg text-foreground">Descripcion Tecnica</CardTitle>
+            <Card className="rounded-2xl bg-card/50 backdrop-blur-sm border-border overflow-hidden">
+              <CardHeader className="pb-2 px-4 sm:px-6">
+                <CardTitle className="text-base sm:text-lg text-foreground">Descripcion Tecnica</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">
+              <CardContent className="space-y-4 px-4 sm:px-6">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   EasyCommerce es un sistema robusto, seguro y escalable diseñado con la arquitectura:
                 </p>
-                <div className="bg-secondary/30 p-4 rounded-xl font-mono text-xs md:text-sm border border-border/50 text-center space-y-2">
-                  <div className="text-primary font-semibold">Request &rarr; Controller &rarr; Service &rarr; Repository &rarr; PostgreSQL</div>
-                  <div className="text-muted-foreground">&darr; DTOs (MapStruct) &darr;</div>
-                  <div className="text-muted-foreground">&darr; JWT Filter (Spring Security) &darr;</div>
+
+                {/* Flujo de capas — stacked en mobile, horizontal en sm+ */}
+                <div className="bg-secondary/30 p-3 rounded-xl border border-border/50 font-mono text-[11px] sm:text-xs">
+                  {/* Mobile: vertical stack */}
+                  <div className="flex flex-col items-center gap-0.5 sm:hidden">
+                    {["Request", "Controller", "Service", "Repository", "PostgreSQL"].map((step, i, arr) => (
+                      <div key={step} className="flex flex-col items-center">
+                        <div className={`px-3 py-1 rounded text-center font-semibold ${
+                          step === "PostgreSQL"
+                            ? "text-teal-600 dark:text-teal-400 bg-teal-500/10 border border-teal-500/20"
+                            : "text-primary bg-primary/10 border border-primary/20"
+                        }`}>{step}</div>
+                        {i < arr.length - 1 && <div className="text-muted-foreground text-sm leading-none py-0.5">↓</div>}
+                      </div>
+                    ))}
+                  </div>
+                  {/* Desktop: horizontal with scroll */}
+                  <div className="hidden sm:block overflow-x-auto">
+                    <div className="text-primary font-semibold whitespace-nowrap text-center py-1">
+                      Request → Controller → Service → Repository → PostgreSQL
+                    </div>
+                  </div>
+                  <div className="text-muted-foreground text-center mt-1.5">↓ DTOs (MapStruct) ↓</div>
+                  <div className="text-muted-foreground text-center">↓ JWT Filter (Spring Security) ↓</div>
                 </div>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li><strong className="text-foreground">Controller:</strong> Maneja las peticiones HTTP y delega a la capa de servicio.</li>
-                  <li><strong className="text-foreground">Service:</strong> Contiene toda la lógica de negocio central y validaciones.</li>
-                  <li><strong className="text-foreground">Repository:</strong> Acceso a datos limpio utilizando Spring Data JPA.</li>
-                  <li><strong className="text-foreground">DTO:</strong> Asegura una separación estricta entre los contratos de la API y las entidades de la base de datos.</li>
-                  <li><strong className="text-foreground">Security:</strong> Cadena completa de filtros orientada a JWT en modo stateless puro (sin refresh tokens) con control de acceso por roles (RBAC).</li>
+
+                <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
+                  {[
+                    { label: "Controller", desc: "Maneja las peticiones HTTP y delega a la capa de servicio." },
+                    { label: "Service", desc: "Contiene toda la lógica de negocio central y validaciones." },
+                    { label: "Repository", desc: "Acceso a datos limpio utilizando Spring Data JPA." },
+                    { label: "DTO", desc: "Asegura una separación estricta entre los contratos de la API y las entidades de la base de datos." },
+                    { label: "Security", desc: "Cadena completa de filtros orientada a JWT en modo stateless puro con control de acceso por roles (RBAC)." },
+                  ].map(({ label, desc }) => (
+                    <li key={label} className="flex gap-1.5 leading-relaxed">
+                      <strong className="text-foreground shrink-0">{label}:</strong>
+                      <span>{desc}</span>
+                    </li>
+                  ))}
                 </ul>
               </CardContent>
             </Card>
@@ -296,38 +280,38 @@ export function FeaturedProject() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex gap-4 p-4 rounded-2xl bg-card/30 border border-border hover:border-primary/30 transition-colors"
+                  className="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/30 border border-border hover:border-primary/30 transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <feature.icon className="w-5 h-5 text-primary" />
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground">{feature.title}</h4>
-                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    <h4 className="font-medium text-foreground text-sm sm:text-base">{feature.title}</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-4">
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Button
-                className="rounded-2xl bg-primary text-primary-foreground hover:bg-primary/90 flex-1"
+                className="rounded-2xl bg-primary text-primary-foreground hover:bg-primary/90 flex-1 text-sm"
                 asChild
               >
                 <a href="https://github.com/fabrizzio323/easyecommerce.git" target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-5 w-5" />
+                  <Github className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   GitHub Repository
                 </a>
               </Button>
               <Button
                 variant="outline"
-                className="rounded-2xl border-border hover:bg-secondary/50 flex-1"
+                className="rounded-2xl border-border hover:bg-secondary/50 flex-1 text-sm"
                 asChild
               >
-                <a href="https://easyecommerce.onrender.com/swagger-ui.html" target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="mr-2 h-5 w-5" />
-                  Live Swagger (Render)
+                <a href="https://easyecommerce-vwi-production.up.railway.app/swagger-ui/index.html" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  Live Swagger (Railway)
                 </a>
               </Button>
             </div>

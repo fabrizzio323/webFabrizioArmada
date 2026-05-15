@@ -32,19 +32,19 @@ const timelineItems = [
 
 export function Timeline() {
   return (
-    <section id="experience" className="py-20 md:py-32 bg-card/30">
-      <div className="container mx-auto px-4">
+    <section id="experience" className="py-16 sm:py-20 md:py-32 bg-card/30">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 sm:mb-4">
             Experiencia y Educacion
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
             Mi trayectoria academica y profesional
           </p>
         </motion.div>
@@ -61,32 +61,32 @@ export function Timeline() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                className={`relative flex items-start gap-6 mb-12 last:mb-0 ${
+                className={`relative flex items-start gap-6 mb-8 sm:mb-10 last:mb-0 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
                 {/* Icon */}
-                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center z-10">
-                  <item.icon className="w-4 h-4 text-primary" />
+                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center z-10 mt-1">
+                  <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                 </div>
 
                 {/* Content */}
-                <div className={`ml-16 md:ml-0 md:w-1/2 ${
+                <div className={`ml-14 sm:ml-16 md:ml-0 md:w-1/2 ${
                   index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"
                 }`}>
-                  <div className={`p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-primary/30 transition-colors ${
+                  <div className={`p-4 sm:p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-primary/30 transition-colors ${
                     index % 2 === 0 ? "md:ml-auto" : ""
                   }`}>
-                    <span className="inline-block px-3 py-1 text-xs font-mono text-primary bg-primary/10 rounded-full mb-3">
+                    <span className="inline-block px-2.5 py-1 text-[11px] sm:text-xs font-mono text-primary bg-primary/10 rounded-full mb-3">
                       {item.period}
                     </span>
-                    <h3 className="text-lg font-semibold text-foreground mb-1">
+                    <h3 className="text-base sm:text-lg font-semibold text-foreground mb-1 leading-snug">
                       {item.title}
                     </h3>
-                    <p className="text-primary font-medium text-sm mb-3">
+                    <p className="text-primary font-medium text-xs sm:text-sm mb-2 sm:mb-3">
                       {item.organization}
                     </p>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                       {item.description}
                     </p>
                   </div>
