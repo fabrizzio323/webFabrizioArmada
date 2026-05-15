@@ -67,7 +67,8 @@ export function HeroSection() {
                   if (htmlLang.toLowerCase().includes('en')) lang = 'en'
                   else if (htmlLang.toLowerCase().includes('ru')) lang = 'ru'
 
-                  const basePath = process.env.NODE_ENV === "production" ? "/webFabrizioArmada" : ""
+                  const isProd = process.env.NODE_ENV === "production" || process.env.GITHUB_ACTIONS;
+                  const basePath = isProd ? "/webFabrizioArmada" : ""
                   const fileUrl = `${basePath}/cv-${lang}.pdf`
                   const link = document.createElement('a')
                   link.href = fileUrl
